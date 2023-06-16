@@ -20,3 +20,23 @@ def show_CharacterMenu():
     option = input("Enter your option: ")
     print("✩----------------------✩")
     return option
+
+def show_FightMenu(character, enemy):
+    life = {
+        "Knight": 50,
+        "Wizard": 40,
+        "Paladin": 60,
+        "Alchemist": 45
+    }
+    initial_Life = {
+        "Knight": 50,
+        "Wizard": 40,
+        "Paladin": 60,
+        "Alchemist": 45
+    }
+    damage = {
+        "Knight": 8,
+        "Wizard": 7,
+        "Paladin": 10,
+        "Alchemist": 9
+    }
