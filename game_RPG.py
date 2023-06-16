@@ -71,3 +71,17 @@ def show_FightMenu(character, enemy):
             print("✩----------------------✩")
             print(f"You have attacked {enemy} and dealt {modified_damage} damage points!")
 
+            if life[enemy] <= 0:
+                print("✩----------------------✩")
+                print(f"You have defeated {enemy}!")
+                break
+
+            # Enemy's attack
+            modified_damage = damage[enemy] + damage_modifier[enemy].get(character, 0)
+            life[character] -= modified_damage
+            print(f"{enemy} attacks you and deals {modified_damage} damage points.")
+
+            if life[character] <= 0:
+                print("✩----------------------✩")
+                print("You have been defeated!")
+                break
