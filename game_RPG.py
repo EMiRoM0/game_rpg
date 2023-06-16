@@ -1,6 +1,8 @@
+#Cristobal Emilio Romo Calvillo 3Dual
+#Python game
 import random
 
-#An initial menu with 2 options for the game
+# An initial menu with 2 options for the game
 def show_InitialMenu():
     print("Welcome to FinalPythonsy!\n")
     print("1. Start Game")
@@ -8,11 +10,11 @@ def show_InitialMenu():
     option = input("Enter your option:\n")
     return option
 
-#A message if we select exit
+# A message displayed when the player selects exit
 def goodbye_Message():
     print("Thanks for playing. See ya!")
 
-#Here we show the available characters to choose
+# Displays the menu to select a character
 def show_CharacterMenu():
     print("✩----------------------✩")
     print("Select your character:")
@@ -24,8 +26,9 @@ def show_CharacterMenu():
     print("✩----------------------✩")
     return option
 
-#Now then we assign the different values of each character like their life points, max life points, damage and the damage modifier
+# Displays the fight menu and handles the battle logic
 def show_FightMenu(character, enemy):
+    # Initialize life points, initial life points, damage, and damage modifiers for each character
     life = {
         "Knight": 50,
         "Wizard": 40,
@@ -53,11 +56,10 @@ def show_FightMenu(character, enemy):
 
     turns = 0
 
-#Here shows our selected character and our enemy
+    # Show the selected character and the enemy
     print(f"You have selected... {character}!")
     print(f"You will fight against... {enemy}!")
 
-#Now here are the status of the battle, all type of details and the table of actions.
     while True:
         print("✩----------------------✩")
         print("Status:")
@@ -70,7 +72,6 @@ def show_FightMenu(character, enemy):
         print("3. Exit Game")
         option = input("Select an option: ")
 
-#Now this happen if we attack
         if option == "1":
             # Attack logic
             modified_damage = damage[character] + damage_modifier[character].get(enemy, 0)
@@ -78,33 +79,30 @@ def show_FightMenu(character, enemy):
             print("✩----------------------✩")
             print(f"You have attacked {enemy} and dealt {modified_damage} damage points!")
 
-#Here it is when our life is zero, we lose
             if life[enemy] <= 0:
                 print("✩----------------------✩")
                 print(f"You have defeated {enemy}!")
                 break
 
-            # Enemy attack logic here
+            # Enemy attack logic
             modified_damage = damage[enemy] + damage_modifier[enemy].get(character, 0)
             life[character] -= modified_damage
             print(f"{enemy} attacks you and deals {modified_damage} damage points.")
 
-#In the case we defeat the enemy this will appear
             if life[character] <= 0:
                 print("✩----------------------✩")
                 print("You have been defeated!")
                 break
 
-#If we choose the action number 2, we can heal us and recover life points
         elif option == "2":
             # Player's healing
             life[character] += 15
             if life[character] > initial_Life[character]:
                 life[character] = initial_Life[character]
-                print("✩----------------------✩")
+            print("✩----------------------✩")
             print(f"You have healed. Your current health is {life[character]}")
 
-            # Enemy logic and what happend if the enemy damage us the enough
+            # Enemy attack logic
             modified_damage = damage[enemy] + damage_modifier[enemy].get(character, 0)
             life[character] -= modified_damage
             print(f"{enemy} attacks you and deals {modified_damage} damage points.")
@@ -112,30 +110,30 @@ def show_FightMenu(character, enemy):
             if life[character] <= 0:
                 print("✩----------------------✩")
                 print("You have been defeated!")
-
                 break
-            #And if we select the action, the game ends
+
         elif option == "3":
             goodbye_Message()
             break
-        #If we put an invalid option, other number, this will appear
+
         else:
             print("✩----------------------✩")
             print("Invalid option. Please try again.")
 
-            turns += 1
-            #There is the probability of the enemy to heal theirselves
+        turns += 1
+
+        # There is a probability for the enemy to heal itself
         if turns % random.randint(2, 3) == 0:
             # Enemy's healing
             life[enemy] += 15
             if life[enemy] > initial_Life[enemy]:
                 life[enemy] = initial_Life[enemy]
-                print("✩----------------------✩")
+            print("✩----------------------✩")
             print(f"{enemy} has healed and recovered 15 life points.")
 
+# Show the initial menu and handle user input
 option = show_InitialMenu()
 
-#When we will choose a character there is a randomizer to assign our enemy
 if option == "1":
     character_option = show_CharacterMenu()
 
@@ -151,7 +149,6 @@ if option == "1":
         print("✩----------------------✩")
         print("Invalid option. Please try again.")
 
-#If in the initial menu we put 2, the code ends
 elif option == "2":
     goodbye_Message()
 
