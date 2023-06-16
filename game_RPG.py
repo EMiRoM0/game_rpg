@@ -99,3 +99,10 @@ def show_FightMenu(character, enemy):
             life[character] -= modified_damage
             print(f"{enemy} attacks you and deals {modified_damage} damage points.")
 
+        elif option == "3":
+            goodbye_Message()
+            break
+
+        else:
+            print("✩----------------------✩")
+            print("Invalid option. Please try again.")
