@@ -40,3 +40,14 @@ def show_FightMenu(character, enemy):
         "Paladin": 10,
         "Alchemist": 9
     }
+    damage_modifier = {
+        "Knight": {"Wizard": 3, "Paladin": -3},
+        "Wizard": {"Alchemist": 3, "Knight": -2},
+        "Paladin": {"Knight": 2, "Alchemist": -3},
+        "Alchemist": {"Paladin": 4, "Wizard": -2}
+    }
+
+    turns = 0
+
+    print(f"You have selected... {character}!")
+    print(f"You will fight against... {enemy}!")
