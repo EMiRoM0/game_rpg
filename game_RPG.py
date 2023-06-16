@@ -51,3 +51,23 @@ def show_FightMenu(character, enemy):
 
     print(f"You have selected... {character}!")
     print(f"You will fight against... {enemy}!")
+
+    while True:
+        print("✩----------------------✩")
+        print("Status:")
+        print(f"Your life points: {life[character]}")
+        print(f"{enemy}'s life points: {life[enemy]}")
+        print("✩----------------------✩")
+        print("What will you do?")
+        print("1. Attack")
+        print("2. Heal")
+        print("3. Exit Game")
+        option = input("Select an option: ")
+
+        if option == "1":
+            # Attack
+            modified_damage = damage[character] + damage_modifier[character].get(enemy, 0)
+            life[enemy] -= modified_damage
+            print("✩----------------------✩")
+            print(f"You have attacked {enemy} and dealt {modified_damage} damage points!")
+
