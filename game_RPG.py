@@ -116,7 +116,7 @@ def show_FightMenu(character, enemy):
                 life[enemy] = initial_Life[enemy]
                 print("✩----------------------✩")
             print(f"{enemy} has healed and recovered 15 life points.")
-            
+
 option = show_InitialMenu()
 
 if option == "1":
@@ -133,3 +133,10 @@ if option == "1":
     else:
         print("✩----------------------✩")
         print("Invalid option. Please try again.")
+
+elif option == "2":
+    goodbye_Message()
+
+else:
+    print("✩----------------------✩")
+    print("Invalid option. Please try again.")
