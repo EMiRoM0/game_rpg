@@ -106,3 +106,30 @@ def show_FightMenu(character, enemy):
         else:
             print("✩----------------------✩")
             print("Invalid option. Please try again.")
+
+            turns += 1
+
+        if turns % random.randint(2, 3) == 0:
+            # Enemy's healing
+            life[enemy] += 15
+            if life[enemy] > initial_Life[enemy]:
+                life[enemy] = initial_Life[enemy]
+                print("✩----------------------✩")
+            print(f"{enemy} has healed and recovered 15 life points.")
+            
+option = show_InitialMenu()
+
+if option == "1":
+    character_option = show_CharacterMenu()
+
+    if character_option == "1":
+        show_FightMenu("Knight", random.choice(["Wizard", "Paladin", "Alchemist"]))
+    elif character_option == "2":
+        show_FightMenu("Wizard", random.choice(["Knight", "Paladin", "Alchemist"]))
+    elif character_option == "3":
+        show_FightMenu("Paladin", random.choice(["Knight", "Wizard", "Alchemist"]))
+    elif character_option == "4":
+        show_FightMenu("Alchemist", random.choice(["Knight", "Wizard", "Paladin"]))
+    else:
+        print("✩----------------------✩")
+        print("Invalid option. Please try again.")
