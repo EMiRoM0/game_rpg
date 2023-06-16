@@ -85,3 +85,17 @@ def show_FightMenu(character, enemy):
                 print("✩----------------------✩")
                 print("You have been defeated!")
                 break
+
+        elif option == "2":
+            # Player's healing
+            life[character] += 15
+            if life[character] > initial_Life[character]:
+                life[character] = initial_Life[character]
+                print("✩----------------------✩")
+            print(f"You have healed. Your current health is {life[character]}")
+
+            # Enemy's attack
+            modified_damage = damage[enemy] + damage_modifier[enemy].get(character, 0)
+            life[character] -= modified_damage
+            print(f"{enemy} attacks you and deals {modified_damage} damage points.")
+
